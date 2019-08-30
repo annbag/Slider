@@ -1,0 +1,39 @@
+.title {
+    text-align: center;
+}
+#images {
+    display: flex;
+    justify-content: center;
+}
+
+#left-arrow, #right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(50%);
+}
+
+#left-arrow {
+    left: 5%
+}
+
+#right-arrow {
+    right: 5%
+}
+
+ul {
+    position: relative;
+    width: 600px;
+    height: 400px;
+}
+
+li {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+}
+
+li:first-child {
+    opacity: 1;
+}
