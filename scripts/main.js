@@ -5,8 +5,6 @@ const elements = document.getElementsByTagName('li');
 let activeElement = 0;
 
 function next() {
-    console.log('next');
-
     activeElement++;
 
     elements[activeElement].classList.add('active');
@@ -20,7 +18,14 @@ function next() {
 }
 
 function prev() {
-    console.log('prev');
+    activeElement--;
+
+    if (activeElement === -1) {
+        activeElement = elements.length - 1;
+    }
+
+    elements[activeElement].classList.add('active');
+    elements[activeElement + 1].classList.remove('active');
 }
 
 
