@@ -1,12 +1,15 @@
-$.getJSON('https://annbag.github.io/Slider/data.json', function (data) {
+$.getJSON('https://annbag.github.io/Slider/data/data.json', function (data) {
     console.log(data);
-    let output = "<ul>";
+    const list = document.createElement('ul');
     data.forEach(image => {
-        output += "<li>";
-        output += `<img src="${image.imageUrl}" >`;
-        output += "</li>";
+        const item = document.createElement('li');
+        const photo = document.createElement('img');
+        list.appendChild(item);
+        item.appendChild(photo);
+        photo.src = `${image.imageUrl}`;
     });
 
-    output += "</ul>";
-    document.getElementById('images').innerHTML = output;
+    document.getElementById('images').appendChild(list)
 });
+
+
