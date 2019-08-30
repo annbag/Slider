@@ -9,7 +9,11 @@ $.getJSON('https://annbag.github.io/Slider/data/data.json', function (data) {
         photo.src = `${image.imageUrl}`;
     });
 
-    document.getElementById('images').appendChild(list)
+    document.getElementById('images').appendChild(list);
+
+    const element = document.querySelector('li');
+    element.classList.add('active');
 });
+
 
 
