@@ -15,6 +15,7 @@ function next() {
     if (activeElement === elements.length - 1) {
         elements[0].classList.add('active');
         elements[elements.length - 1].classList.remove('active');
+        activeElement = 0;
     }
 }
 
