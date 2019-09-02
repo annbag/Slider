@@ -44,7 +44,7 @@ function prev() {
 function changePhoto() {
     activeElement++;
 
-    if (activeElement === elements.length - 1) {
+    if (activeElement === elements.length) {
         elements[0].classList.add('active');
         elements[elements.length - 1].classList.remove('active');
         activeElement = 0;
