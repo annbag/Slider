@@ -2,20 +2,30 @@ const right = document.getElementById('right-arrow');
 const left = document.getElementById('left-arrow');
 const elements = document.getElementsByTagName('li');
 
-let activeElement = 0;
 const time = 3000;
+let activeElement = 0;
+let interval;
+
+function main() {
+    interval = setInterval(changePhoto, time);
+
+    right.addEventListener('click', next);
+    left.addEventListener('click', prev);
+}
 
 function next() {
     activeElement++;
-
-    elements[activeElement].classList.add('active');
-    elements[activeElement - 1].classList.remove('active');
 
     if (activeElement === elements.length - 1) {
         elements[0].classList.add('active');
         elements[elements.length - 1].classList.remove('active');
         activeElement = 0;
     }
+
+    elements[activeElement].classList.add('active');
+    elements[activeElement - 1].classList.remove('active');
+
+    clearInterval(interval);
 }
 
 function prev() {
@@ -27,24 +37,26 @@ function prev() {
 
     elements[activeElement].classList.add('active');
     elements[activeElement + 1].classList.remove('active');
+
+    clearInterval(interval);
 }
 
 function changePhoto() {
     activeElement++;
-
-    elements[activeElement].classList.add('active');
-    elements[activeElement - 1].classList.remove('active');
 
     if (activeElement === elements.length - 1) {
         elements[0].classList.add('active');
         elements[elements.length - 1].classList.remove('active');
         activeElement = 0;
     }
+
+    elements[activeElement].classList.add('active');
+    elements[activeElement - 1].classList.remove('active');
 }
 
-right.addEventListener('click', next);
-left.addEventListener('click', prev);
-setInterval(changePhoto, time);
+window.addEventListener('DOMContentLoaded', main);
+
+
 
 
 
