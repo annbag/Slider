@@ -14,6 +14,3 @@ $.getJSON('https://annbag.github.io/Slider/data/data.json', function (data) {
     const element = document.querySelector('li');
     element.classList.add('active');
 });
-
-
-
