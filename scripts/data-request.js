@@ -11,6 +11,5 @@ $.getJSON('https://annbag.github.io/Slider/data/data.json', function (data) {
 
     document.getElementById('images').appendChild(list);
 
-    const element = document.querySelector('li');
-    element.classList.add('active');
+    main();
 });
