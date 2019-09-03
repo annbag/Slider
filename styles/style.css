@@ -68,6 +68,63 @@ li.active {
     margin-top: 10px;
     display: flex;
     justify-content: center;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+@media (min-width: 330px) {
+    #dots {
+        top: 55%;
+    }
+}
+
+@media (min-width: 360px) {
+    #dots {
+        top: 60%;
+    }
+}
+
+@media (min-width: 400px) {
+    #dots {
+        top: 65%;
+    }
+}
+
+@media (min-width: 440px) {
+    #dots {
+        top: 70%;
+    }
+}
+
+@media (min-width: 460px) {
+    #dots {
+        top: 75%;
+    }
+}
+
+@media (min-width: 500px) {
+    #dots {
+        top: 80%;
+    }
+}
+
+@media (min-width: 540px) {
+    #dots {
+        top: 85%;
+    }
+}
+
+@media (min-width: 580px) {
+    #dots {
+        top: 95%;
+    }
+}
+
+@media (min-width: 620px) {
+    #dots {
+        top: 100%;
+    }
 }
 
 .dot {
