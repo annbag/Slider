@@ -12,10 +12,16 @@ function main() {
     fetchImages()
         .then((images) => {
             renderImages(images);
-            interval = setInterval(changePhoto, time);
+            interval = setInterval(next, time);
 
-            right.addEventListener('click', next);
-            left.addEventListener('click', prev);
+            right.addEventListener('click', () => {
+                next();
+                clearInterval(interval);
+            });
+            left.addEventListener('click', () => {
+                prev();
+                clearInterval(interval);
+            });
 
             addDots();
             addActiveClassToFirstElement();
@@ -40,8 +46,6 @@ function next() {
 
     dots[activeElement].classList.add('active');
     dots[activeElement - 1].classList.remove('active');
-
-    clearInterval(interval);
 }
 
 function prev() {
@@ -61,29 +65,6 @@ function prev() {
 
     dots[activeElement].classList.add('active');
     dots[activeElement + 1].classList.remove('active');
-
-    clearInterval(interval);
-}
-
-function changePhoto() {
-    activeElement++;
-
-    if (activeElement === elements.length) {
-        elements[0].classList.add('active');
-        elements[elements.length - 1].classList.remove('active');
-
-        dots[0].classList.add('active');
-        dots[elements.length - 1].classList.remove('active');
-
-        activeElement = 0;
-    }
-
-    elements[activeElement].classList.add('active');
-    elements[activeElement - 1].classList.remove('active');
-
-    dots[activeElement].classList.add('active');
-    dots[activeElement - 1].classList.remove('active');
-
 }
 
 function addActiveClassToFirstElement() {
