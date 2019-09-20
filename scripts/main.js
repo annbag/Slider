@@ -12,14 +12,14 @@ function main() {
     fetchImages()
         .then((images) => {
             renderImages(images);
-            interval = setInterval(next, time);
+            interval = setInterval(nextImage, time);
 
             right.addEventListener('click', () => {
-                next();
+                nextImage();
                 clearInterval(interval);
             });
             left.addEventListener('click', () => {
-                prev();
+                prevImage();
                 clearInterval(interval);
             });
 
@@ -28,43 +28,46 @@ function main() {
         });
 }
 
-function next() {
+function nextImage() {
     activeElement++;
 
-    if (activeElement === elements.length) {
+    const isActiveElementOutOfElementCollection = (activeElement === elements.length);
+    const numberPhotos = elements.length - 1;
+
+    if (isActiveElementOutOfElementCollection) {
         elements[0].classList.add('active');
-        elements[elements.length - 1].classList.remove('active');
+        elements[numberPhotos].classList.remove('active');
 
         dots[0].classList.add('active');
-        dots[elements.length - 1].classList.remove('active');
+        dots[numberPhotos].classList.remove('active');
 
         activeElement = 0;
+    } else {
+        elements[activeElement].classList.add('active');
+        elements[activeElement - 1].classList.remove('active');
+
+        dots[activeElement].classList.add('active');
+        dots[activeElement - 1].classList.remove('active');
     }
-
-    elements[activeElement].classList.add('active');
-    elements[activeElement - 1].classList.remove('active');
-
-    dots[activeElement].classList.add('active');
-    dots[activeElement - 1].classList.remove('active');
 }
 
-function prev() {
+function prevImage() {
     activeElement--;
 
-    if (activeElement === -1) {
+    const isActiveElementBelowZero = (activeElement === -1);
+
+    if (isActiveElementBelowZero) {
         activeElement = elements.length - 1;
         elements[0].classList.remove('active');
-        elements[activeElement].classList.add('active');
 
         dots[0].classList.remove('active');
+    } else {
+        elements[activeElement].classList.add('active');
+        elements[activeElement + 1].classList.remove('active');
+
         dots[activeElement].classList.add('active');
+        dots[activeElement + 1].classList.remove('active');
     }
-
-    elements[activeElement].classList.add('active');
-    elements[activeElement + 1].classList.remove('active');
-
-    dots[activeElement].classList.add('active');
-    dots[activeElement + 1].classList.remove('active');
 }
 
 function addActiveClassToFirstElement() {
