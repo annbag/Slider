@@ -71,18 +71,17 @@ function prevImage() {
 }
 
 function addActiveClassToFirstElement() {
-    const element = document.querySelector('li');
-    element.classList.add('active');
+    const firstPhoto = document.querySelector('li');
+    firstPhoto.classList.add('active');
 
-    const dotsDiv = document.querySelector('div.dot');
-    dotsDiv.classList.add('active');
+    const firstDot = document.querySelector('.dot');
+    firstDot.classList.add('active');
 }
 
 function addDots() {
     const dots = document.getElementById('dots');
-    const count = elements.length;
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < elements.length; i++) {
         const dot = document.createElement('div');
         dot.classList.add('dot');
         dots.appendChild(dot);
