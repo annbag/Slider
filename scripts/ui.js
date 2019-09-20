@@ -7,7 +7,7 @@ function renderImages(images) {
         const photo = document.createElement('img');
         list.appendChild(item);
         item.appendChild(photo);
-        photo.src = `${image.imageUrl}`;
+        photo.src = image.imageUrl;
     });
 
     document.getElementById('images').appendChild(list);
