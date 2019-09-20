@@ -2,35 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Slider</title>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Slider</title>
-    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-<section class="section">
+<main class="section">
     <div class="container">
-        <h1 class="title">Slider </h1>
-        <a class="button" id="left-arrow">
-            <span class="icon is-large">
-                <i class="fas fa-2x	fa-chevron-left"></i>
-            </span>
-        </a>
-        <div id="images">
 
+        <h1 class="title">Slider</h1>
+
+        <div class="arrows">
+            <a class="button is-rounded left-arrow" id="left-arrow">
+                &Lang;
+            </a>
+            <a class="button is-rounded right-arrow" id="right-arrow">
+                &Rang;
+            </a>
         </div>
-        <div id="dots">
-        </div>
-        <a class="button" id="right-arrow">
-            <span class="icon is-large">
-                <i class="fas fa-2x	fa-chevron-right"></i>
-            </span>
-        </a>
+
+        <div id="images"></div>
+
+        <div id="dots"></div>
+
     </div>
-</section>
+</main>
 <script src="scripts/config.js"></script>
 <script src="scripts/ui.js"></script>
 <script src="scripts/fetch-images.service.js"></script>
