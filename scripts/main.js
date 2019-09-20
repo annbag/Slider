@@ -9,13 +9,16 @@ let interval;
 
 
 function main() {
-    interval = setInterval(changePhoto, time);
+    fetchImages((images) => {
+        renderImages(images);
+        interval = setInterval(changePhoto, time);
 
-    right.addEventListener('click', next);
-    left.addEventListener('click', prev);
+        right.addEventListener('click', next);
+        left.addEventListener('click', prev);
 
-    addDots();
-    addActiveClassToFirstElement();
+        addDots();
+        addActiveClassToFirstElement();
+    })
 }
 
 function next() {
@@ -101,7 +104,7 @@ function addDots() {
     }
 }
 
-// window.addEventListener('DOMContentLoaded', main);
+window.addEventListener('DOMContentLoaded', main);
 
 
 
