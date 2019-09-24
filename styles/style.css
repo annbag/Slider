@@ -1,3 +1,7 @@
+.slider {
+    margin: 0 auto 100px;
+}
+
 .title {
     text-align: center;
 }
@@ -5,12 +9,13 @@
 .button {
     font-size: 1.2rem;
 }
+
 .button.is-rounded {
     padding-left: 0.8em;
     padding-right: 0.8em;
 }
 
-#images {
+.images {
     display: flex;
     justify-content: center;
 }
@@ -78,7 +83,7 @@ li.active {
     opacity: 1;
 }
 
-#dots {
+.dots {
     margin-top: 10px;
     display: flex;
     justify-content: center;
@@ -88,55 +93,55 @@ li.active {
 }
 
 @media (min-width: 330px) {
-    #dots {
+    .dots {
         top: 55%;
     }
 }
 
 @media (min-width: 360px) {
-    #dots {
+    .dots {
         top: 60%;
     }
 }
 
 @media (min-width: 400px) {
-    #dots {
+    .dots {
         top: 65%;
     }
 }
 
 @media (min-width: 440px) {
-    #dots {
+    .dots {
         top: 70%;
     }
 }
 
 @media (min-width: 460px) {
-    #dots {
+    .dots {
         top: 75%;
     }
 }
 
 @media (min-width: 500px) {
-    #dots {
+    .dots {
         top: 80%;
     }
 }
 
 @media (min-width: 540px) {
-    #dots {
+    .dots {
         top: 85%;
     }
 }
 
 @media (min-width: 580px) {
-    #dots {
+    .dots {
         top: 95%;
     }
 }
 
 @media (min-width: 620px) {
-    #dots {
+    .dots {
         top: 100%;
     }
 }

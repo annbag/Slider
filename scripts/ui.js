@@ -10,5 +10,5 @@ function renderImages(images) {
         photo.src = image.imageUrl;
     });
 
-    document.getElementById('images').appendChild(list);
+    document.querySelector('.images').appendChild(list);
 }

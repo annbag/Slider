@@ -1,12 +1,11 @@
-const right = document.getElementById('right-arrow');
-const left = document.getElementById('left-arrow');
-const elements = document.getElementsByTagName('li');
-const dots = document.getElementsByClassName('dot');
+const sliderButtonNext = document.querySelector('.right-arrow');
+const sliderButtonPrev = document.querySelector('.left-arrow');
+const sliderElements = document.getElementsByTagName('li');
+const sliderDotsElement = document.getElementsByClassName('dot');
 
 const time = 3000;
 let activeElement = 0;
 let interval;
-
 
 function main() {
     fetchImages()
@@ -14,11 +13,11 @@ function main() {
             renderImages(images);
             interval = setInterval(nextImage, time);
 
-            right.addEventListener('click', () => {
+            sliderButtonNext.addEventListener('click', () => {
                 nextImage();
                 clearInterval(interval);
             });
-            left.addEventListener('click', () => {
+            sliderButtonPrev.addEventListener('click', () => {
                 prevImage();
                 clearInterval(interval);
             });
@@ -31,23 +30,23 @@ function main() {
 function nextImage() {
     activeElement++;
 
-    const isActiveElementOutOfElementCollection = (activeElement === elements.length);
-    const numberPhotos = elements.length - 1;
+    const isActiveElementOutOfElementCollection = (activeElement === sliderElements.length);
+    const numberPhotos = sliderElements.length - 1;
 
     if (isActiveElementOutOfElementCollection) {
-        elements[0].classList.add('active');
-        elements[numberPhotos].classList.remove('active');
+        sliderElements[0].classList.add('active');
+        sliderElements[numberPhotos].classList.remove('active');
 
-        dots[0].classList.add('active');
-        dots[numberPhotos].classList.remove('active');
+        sliderDotsElement[0].classList.add('active');
+        sliderDotsElement[numberPhotos].classList.remove('active');
 
         activeElement = 0;
     } else {
-        elements[activeElement].classList.add('active');
-        elements[activeElement - 1].classList.remove('active');
+        sliderElements[activeElement].classList.add('active');
+        sliderElements[activeElement - 1].classList.remove('active');
 
-        dots[activeElement].classList.add('active');
-        dots[activeElement - 1].classList.remove('active');
+        sliderDotsElement[activeElement].classList.add('active');
+        sliderDotsElement[activeElement - 1].classList.remove('active');
     }
 }
 
@@ -57,16 +56,16 @@ function prevImage() {
     const isActiveElementBelowZero = (activeElement === -1);
 
     if (isActiveElementBelowZero) {
-        activeElement = elements.length - 1;
-        elements[0].classList.remove('active');
+        activeElement = sliderElements.length - 1;
+        sliderElements[0].classList.remove('active');
 
-        dots[0].classList.remove('active');
+        sliderDotsElement[0].classList.remove('active');
     } else {
-        elements[activeElement].classList.add('active');
-        elements[activeElement + 1].classList.remove('active');
+        sliderElements[activeElement].classList.add('active');
+        sliderElements[activeElement + 1].classList.remove('active');
 
-        dots[activeElement].classList.add('active');
-        dots[activeElement + 1].classList.remove('active');
+        sliderDotsElement[activeElement].classList.add('active');
+        sliderDotsElement[activeElement + 1].classList.remove('active');
     }
 }
 
@@ -79,12 +78,11 @@ function addActiveClassToFirstElement() {
 }
 
 function addDots() {
-    const dots = document.getElementById('dots');
 
-    for (let i = 0; i < elements.length; i++) {
+    for (let i = 0; i < sliderElements.length; i++) {
         const dot = document.createElement('div');
         dot.classList.add('dot');
-        dots.appendChild(dot);
+        document.querySelector('.dots').appendChild(dot);
     }
 }
 
