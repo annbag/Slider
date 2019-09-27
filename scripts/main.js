@@ -82,13 +82,8 @@ function addDots() {
     for (let i = 0; i < sliderElements.length; i++) {
         const dot = document.createElement('div');
         dot.classList.add('dot');
-        document.querySelector('.dots').appendChild(dot);
+        document.querySelector('.slider-dots').appendChild(dot);
     }
 }
 
 window.addEventListener('DOMContentLoaded', main);
-
-
-
-
-

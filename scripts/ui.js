@@ -1,14 +1,12 @@
 // Process: Render
 function renderImages(images) {
-    const list = document.createElement('ul');
 
     images.forEach(image => {
-        const item = document.createElement('li');
-        const photo = document.createElement('img');
-        list.appendChild(item);
-        item.appendChild(photo);
-        photo.src = image.imageUrl;
+        const sliderElement = document.createElement('li');
+        sliderElement.classList.add('slider-element');
+        const sliderImage = document.createElement('img');
+        document.querySelector('.slider-elements').appendChild(sliderElement);
+        sliderElement.appendChild(sliderImage);
+        sliderImage.src = image.imageUrl;
     });
-
-    document.querySelector('.images').appendChild(list);
 }
