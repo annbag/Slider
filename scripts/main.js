@@ -1,7 +1,7 @@
 const sliderButtonNext = document.querySelector('.right-arrow');
 const sliderButtonPrev = document.querySelector('.left-arrow');
 const sliderElements = document.getElementsByTagName('li');
-const sliderDotsElement = document.getElementsByClassName('dot');
+const sliderDotsElement = document.getElementsByClassName('slider-dot-btn');
 
 const time = 3000;
 let activeElement = 0;
@@ -22,7 +22,8 @@ function main() {
                 clearInterval(interval);
             });
 
-            addDots();
+            // addDots();
+            createDots()
             addActiveClassToFirstElement();
         });
 }
@@ -70,20 +71,43 @@ function prevImage() {
 }
 
 function addActiveClassToFirstElement() {
-    const firstPhoto = document.querySelector('li');
+    const firstPhoto = document.querySelector('.slider-element');
     firstPhoto.classList.add('active');
 
-    const firstDot = document.querySelector('.dot');
+    const firstDot = document.querySelector('.slider-dot-btn');
     firstDot.classList.add('active');
 }
 
-function addDots() {
-
+function createDots() {
+    const sliderDots = document.createElement('div');
+    sliderDots.classList.add('slider-dots');
     for (let i = 0; i < sliderElements.length; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        document.querySelector('.slider-dots').appendChild(dot);
+
+        const dotBtn = document.createElement('button');
+        dotBtn.classList.add('slider-dot-btn');
+        dotBtn.type = 'button';
+
+        dotBtn.addEventListener('click', function() {
+            changeSlide(i);
+        });
+
+        sliderDots.appendChild(dotBtn);
     }
+
+    document.querySelector('.slider').appendChild(sliderDots);
+}
+
+function changeSlide(index) {
+    for (let i = 0; i < sliderElements.length; i++) {
+        sliderElements[i].classList.remove('active');
+        sliderDotsElement[i].classList.remove('active');
+        clearInterval(interval);
+    }
+
+    sliderElements[index].classList.add('active');
+    sliderDotsElement[index].classList.add('active');
+
+    activeElement = index;
 }
 
 window.addEventListener('DOMContentLoaded', main);

@@ -66,16 +66,23 @@
     width: 100%;
 }
 
-.dot {
+.slider-dot-btn {
     position: relative;
     margin: 4px;
+    padding: 0;
     width: 12px;
     height: 12px;
+    border: 0;
+    cursor: pointer;
     background-color: #345995;
     border-radius: 50%;
 }
 
-.dot.active::before {
+.slider-dot-btn:focus {
+    outline: none;
+}
+
+.slider-dot-btn.active::before {
     position: absolute;
     content: '';
     top: -1px;
