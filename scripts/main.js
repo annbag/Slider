@@ -7,7 +7,7 @@ class Slider {
         this.sliderDotsElement = null;
 
         this.activeElement = 0;
-        this.time = 3000;
+        this.time = 2000;
         this.slider = null;
         this.interval = null;
 
@@ -18,9 +18,11 @@ class Slider {
 
 Slider.prototype.generateSlider = function () {
     this.slider = document.querySelector(this.sliderSelector);
+
     this.sliderButtonNext = document.querySelector('.right-arrow');
     this.sliderButtonPrev = document.querySelector('.left-arrow');
     this.sliderElements = document.getElementsByTagName('li');
+
     this.sliderDotsElement = document.getElementsByClassName('slider-dot-btn');
 };
 
@@ -28,7 +30,6 @@ Slider.prototype.main = function () {
     fetchImages()
         .then((images) => {
             renderImages(images);
-            // this.interval = setInterval(this.nextImage, this.time);
             this.interval = setTimeout(function () {
                 this.nextImage();
             }.bind(this), this.time);
@@ -49,12 +50,11 @@ Slider.prototype.main = function () {
 
 Slider.prototype.nextImage = function () {
     this.activeElement++;
-    const isActiveElementOutOfElementCollection = (this.activeElement >= this.sliderElements.length);
+    const isActiveElementOutOfElementCollection = (this.activeElement > this.sliderElements.length - 1);
 
     if (isActiveElementOutOfElementCollection) {
         this.activeElement = 0;
     }
-
     this.changeSlide(this.activeElement);
 };
 
@@ -89,6 +89,7 @@ Slider.prototype.createDots = function () {
 
         dotBtn.addEventListener('click', function () {
             this.changeSlide(i);
+            clearInterval(this.interval);
         }.bind(this));
 
         sliderDots.appendChild(dotBtn);
@@ -107,6 +108,10 @@ Slider.prototype.changeSlide = function (index) {
 
     this.sliderElements[this.activeElement].classList.add('active');
     this.sliderDotsElement[this.activeElement].classList.add('active');
+
+    this.interval = setTimeout(function () {
+        this.nextImage();
+    }.bind(this), this.time);
 };
 
 const slide1 = new Slider('#slider1');
