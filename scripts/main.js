@@ -19,10 +19,12 @@ class Slider {
 
 Slider.prototype.generateSlider = function () {
     this.slider = document.querySelector(this.sliderSelector);
+    this.slider.classList.add('slider');
+    this.slider.classList.add('container');
 
     this.sliderNav = document.createElement('div');
     this.sliderNav.classList.add('slider-nav');
-    document.querySelector('.slider').appendChild(this.sliderNav);
+    this.slider.appendChild(this.sliderNav);
 
     this.sliderButtonNext = document.createElement('button');
     this.sliderButtonNext.classList.add('button');
@@ -37,8 +39,6 @@ Slider.prototype.generateSlider = function () {
     this.sliderNav.appendChild(this.sliderButtonPrev);
 
     this.sliderElements = document.getElementsByTagName('li');
-    console.log(this.sliderElements);
-
     this.sliderDotsElement = document.getElementsByClassName('slider-dot-btn');
 };
 
@@ -111,7 +111,7 @@ Slider.prototype.createDots = function () {
         sliderDots.appendChild(dotBtn);
     }
 
-    document.querySelector('.slider').appendChild(sliderDots);
+    this.slider.appendChild(sliderDots);
 };
 
 Slider.prototype.changeSlide = function (index) {
