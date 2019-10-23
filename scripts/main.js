@@ -1,6 +1,7 @@
 class Slider {
     constructor(elemSelector) {
         this.sliderSelector = elemSelector;
+        this.sliderNav = null;
         this.sliderButtonNext = null;
         this.sliderButtonPrev = null;
         this.sliderElements = null;
@@ -19,9 +20,24 @@ class Slider {
 Slider.prototype.generateSlider = function () {
     this.slider = document.querySelector(this.sliderSelector);
 
-    this.sliderButtonNext = document.querySelector('.right-arrow');
-    this.sliderButtonPrev = document.querySelector('.left-arrow');
+    this.sliderNav = document.createElement('div');
+    this.sliderNav.classList.add('slider-nav');
+    document.querySelector('.slider').appendChild(this.sliderNav);
+
+    this.sliderButtonNext = document.createElement('button');
+    this.sliderButtonNext.classList.add('button');
+    this.sliderButtonNext.classList.add('is-rounded');
+    this.sliderButtonNext.classList.add('right-arrow');
+    this.sliderNav.appendChild(this.sliderButtonNext);
+
+    this.sliderButtonPrev = document.createElement('button');
+    this.sliderButtonPrev.classList.add('button');
+    this.sliderButtonPrev.classList.add('is-rounded');
+    this.sliderButtonPrev.classList.add('left-arrow');
+    this.sliderNav.appendChild(this.sliderButtonPrev);
+
     this.sliderElements = document.getElementsByTagName('li');
+    console.log(this.sliderElements);
 
     this.sliderDotsElement = document.getElementsByClassName('slider-dot-btn');
 };
