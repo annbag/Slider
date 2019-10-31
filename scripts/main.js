@@ -4,7 +4,7 @@ class Slider {
         this.sliderNav = null;
         this.sliderButtonNext = null;
         this.sliderButtonPrev = null;
-        this.sliderElements = null;
+        this.sliderElement = null;
         this.sliderDotsElement = null;
 
         this.activeElement = 0;
@@ -38,7 +38,7 @@ Slider.prototype.generateSlider = function () {
     this.sliderButtonPrev.classList.add('left-arrow');
     this.sliderNav.appendChild(this.sliderButtonPrev);
 
-    this.sliderElements = document.getElementsByTagName('li');
+    this.sliderElement = document.getElementsByClassName('slider-element');
     this.sliderDotsElement = document.getElementsByClassName('slider-dot-btn');
 };
 
@@ -66,7 +66,7 @@ Slider.prototype.main = function () {
 
 Slider.prototype.nextImage = function () {
     this.activeElement++;
-    const isActiveElementOutOfElementCollection = (this.activeElement > this.sliderElements.length - 1);
+    const isActiveElementOutOfElementCollection = (this.activeElement > this.sliderElement.length - 1);
 
     if (isActiveElementOutOfElementCollection) {
         this.activeElement = 0;
@@ -80,7 +80,7 @@ Slider.prototype.prevImage = function () {
     const isActiveElementBelowZero = (this.activeElement < 0);
 
     if (this.activeElement < isActiveElementBelowZero) {
-        this.activeElement = this.sliderElements.length - 1;
+        this.activeElement = this.sliderElement.length - 1;
     }
 
     this.changeSlide(this.activeElement);
@@ -98,7 +98,7 @@ Slider.prototype.createDots = function () {
     const sliderDots = document.createElement('div');
     sliderDots.classList.add('slider-dots');
 
-    for (let i = 0; i < this.sliderElements.length; i++) {
+    for (let i = 0; i < this.sliderElement.length; i++) {
         const dotBtn = document.createElement('button');
         dotBtn.classList.add('slider-dot-btn');
         dotBtn.type = 'button';
@@ -115,14 +115,14 @@ Slider.prototype.createDots = function () {
 };
 
 Slider.prototype.changeSlide = function (index) {
-    for (let i = 0; i < this.sliderElements.length; i++) {
-        this.sliderElements[i].classList.remove('active');
+    for (let i = 0; i < this.sliderElement.length; i++) {
+        this.sliderElement[i].classList.remove('active');
         this.sliderDotsElement[i].classList.remove('active');
         clearInterval(this.interval);
     }
     this.activeElement = index;
 
-    this.sliderElements[this.activeElement].classList.add('active');
+    this.sliderElement[this.activeElement].classList.add('active');
     this.sliderDotsElement[this.activeElement].classList.add('active');
 
     this.interval = setTimeout(function () {
